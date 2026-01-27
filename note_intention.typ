@@ -53,10 +53,10 @@ Contact du tuteur professionnel: #link("mailto:jeremy.lempereur@iomentum.com")[j
 Dans le cadre du travail à réaliser au sein de mon entreprise, j'ai été
 confronté à une base de code existante laissant à désirer.
 
-En réalité, le terme "laissant à désirer" est un euphémisme honteux. Plusieurs
-fichiers que je devais utiliser faisaient plus de 500 lignes, l'architecture
-était complètement désorganisée, et j'ai trouvé beaucoup d'erreurs de code qui
-ne devraient pas exister dans un code réalisé par un·e professionnel·le (par
+En réalité, le terme "laissant à désirer" est un euphémisme. Plusieurs fichiers
+que je devais utiliser faisaient plus de 500 lignes, l'architecture était
+complètement désorganisée, et j'ai trouvé beaucoup d'erreurs de code qui ne
+devraient pas exister dans un code réalisé par un·e professionnel·le (par
 exemple, un `try - catch` avec le `try` faisant 70 lignes).
 
 Mon étonnement s'est amplifié lorsque j'ai posé des questions à l'ingénieur qui
