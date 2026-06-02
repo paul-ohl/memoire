@@ -199,6 +199,28 @@ meubles.
 
 == Lors du développement logiciel en équipe
 
+Coder proprement est difficile. C'est un art autant qu'une discipline
+d'ingénierie, et demande de l'investissement et de l'attention.
+
+Coder en équipe est un problème autrement plus difficile! Une équipe peut être
+composée de membres très talentueux et malgré tout générer beaucoup de dette
+technique.
+
+En effet, au delà de la qualité du code produit par chaque personne,
+l'uniformité du code est une nouvelle contrainte qui, si elle n'est pas prise en
+compte, peut rapidement créer des problèmes.
+
+La gestion de la qualité du code en équipe représente une telle complexité qu'il
+en est devenu une discipline à part entière. Une personne est dédiée à s'assurer
+de la qualité et de l'uniformité du code. Son travail consiste notamment en
+l'accompagnement des autres ingénieur·e·s de l'équipe, le suivi de l'évolution
+du code, et surtout la revue de code (_code review_), c'est-à-dire l'inspection
+méthodique des changements pour les valider ou non.
+
+Souvent, ces _code reviews_ s'intéressent plus à la propreté du code qu'à son
+fonctionnement. En effet, dans le cadre du développement logiciel en équipe, la
+propreté du code est *plus critique* que son fonctionnement!
+
 == Lors du développement logiciel assisté par IA générative
 
 = De l'importance de la "propreté" du code
