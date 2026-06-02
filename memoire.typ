@@ -82,9 +82,8 @@ les problèmes rencontrés liés à l'utilisation des IA génératives.
 
 = Problématique
 
-#styled-quote[Quels liens peuvent être tirés entre la dette technique liée à
-  l'utilisation d'IA génératives, et celle liée à la gestion d'équipe? Et quels
-  enseignements peuvent être tirés de ces liens?]
+#styled-quote[Quels enseignements la gestion d'équipe peut-elle apporter à
+  l'utilisation des IA génératives pour limiter la dette technique ?]
 
 = Rapport d'étonnement
 
