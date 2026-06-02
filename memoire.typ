@@ -1,6 +1,6 @@
 #set page(paper: "a4")
 #set heading(numbering: "1.A.a.")
-#set text(font: "Cantarell", size: 14pt)
+#set text(font: "Liberation Serif", size: 14pt)
 #set quote(block: true)
 
 #show link: set text(fill: blue, weight: 700)
@@ -86,7 +86,7 @@ Cursor) avaient été utilisées. Or j'ai constaté une différence de qualité 
 entre les projets. L'un de ces projets était devenu si complexe à naviguer qu'il
 était très difficile de faire le moindre changement _sans_ une IA.
 
-J'ai trouvé dans ce projet tout les _code smells_ possible: Des fichiers de
+J'ai trouvé dans ce projet tous les _code smells_ possible: Des fichiers de
 plusieurs milliers de lignes, une batterie de tests presque vide, des `try
 catch` excessivement complexes et utilisés de manière inappropriée.
 
@@ -151,7 +151,51 @@ d'hier face aux problèmes d'aujourd'hui.
 
 = Rapport d'étonnement
 
+Le problème de la dette technique liées aux IAs génératives est souvent traité
+comme étant unique et nouveau. La seule différence que je constate est que les
+ingénieur·e·s sont confronté·e·s aux difficultés de la gestion d'équipe et de la
+qualité de code beaucoup plus tôt dans leur carrière.
+
 = Le problème de la dette technique
+
+Comme mentionné dans l'introduction, le problème du mauvais code, ou de la dette
+technique, est presque aussi vieux que l'informatique elle-même.
+
+Il est utile de commencer ce chapitre par une définition de la dette technique:
+
+#quote(attribution: [Article d'IBM par Tim Mucci])[
+  La dette technique désigne les coûts futurs associés au recours à des
+  raccourcis ou à des décisions sous-optimales prises lors du développement d'un
+  logiciel.
+]
+
+Détaillons cette phrase, car le terme de _dette_ est particulièrement bien
+choisi. En effet, en tant qu'ingénieur·e·s, le fait de prendre des décisions
+dangereuses pour la propreté du code rend notre travail _futur_ plus difficile
+et long, que ces décisions soient prises consciemment ou non.
+
+De plus, ces décisions dangereuses sont souvent prises dans le but _d'accélérer_
+le développement actuel de la solution logicielle. Cela rend la dette technique
+d'autant plus pernicieuse qu'elle demande un effort _conscient et constant_ pour
+éviter d'être trop accumulée. Cela passe par un grand nombre de mesures qui
+seront détaillées dans ce mémoire.
+
+Cette dette technique représente un poids monumental pour toute organisation
+ayant une dépendance sur un logiciel, qu'elle le produise elle-même ou non. En
+effet, si le moindre changement de logique demande 6 mois de travail, il est
+impossible d'avoir la réactivité nécessaire au monde moderne en constante
+évolution, que l'organisation soit une start-up tech ou un fabriquant de
+meubles.
+
+#quote(attribution: [Robert C. Martin - Clean Code])[
+  [En parlant d'une entreprise avec un très bon produit qui a fait faillite
+  quelques années après son lancement:]
+
+  Ils s’étaient précipités pour placer le produit sur le marché, mais avaient
+  massacré le code. Avec l’ajout de nouvelles fonctionnalités, la qualité du
+  code s’est dégradée de plus en plus, jusqu’à ce qu’ils ne puissent plus le
+  maîtriser. _Un mauvais code a été à l’origine de la faillite de l’entreprise._
+]
 
 == Lors du développement logiciel en équipe
 
