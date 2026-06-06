@@ -1,5 +1,5 @@
 #set page(paper: "a4")
-#set heading(numbering: "1.A.a.")
+#set heading(numbering: "1.1.1)")
 #set text(font: "Liberation Serif", size: 14pt)
 #set quote(block: true)
 
@@ -78,6 +78,27 @@ Contact du tuteur professionnel:
 
 = Introduction
 
+== Une courte définition
+
+Ce mémoire parle des IAs génératives, il serait donc utile de définir ce terme
+qui peut être interprété de manière ambigüe.
+
+De nombreux termes sont utilisés pour les décrire: LLMs (Large Language Models),
+réseaux de neurones, ou simplement "les IAs".
+
+Tous ces termes décrivent les IAs telles que développées par Anthropic (Claude),
+Google (Gemini) ou OpenAI (ChatGPT): Des IAs qui sont capable d'interpréter et
+générer du texte, d'une façon imitant l'intelligence.
+
+Je parlerai également des "agents" dans ce mémoire. C'est un terme qui décrit
+simplement un programme qui permet à une IA générative d'intéragir directement
+avec des éléments du "monde réel". Par exemple, un agent se chargera de
+récupérer la météo de la journée avant de la donner à une IA pour qu'elle se
+base sur ces informations pour donner un bulletin météo. En effet, sans un agent
+pour récupérer des données extérieures, une IA générative n'a accès à rien de
+plus que les données avec lesquelles elle a été entraînée initialement, qui sont
+souvent devenues obsolètes.
+
 == Le contexte
 
 Dans le cadre de mon travail en alternance, j'ai été confronté à plusieurs
@@ -103,9 +124,7 @@ navigable pour le·la programmeu·r·se qui viendra après moi.
 cours de mon travail sur ce projet. Il était clair pour moi, comme on me
 l'annonçait partout sur internet, que les IAs génératives n'étaient pas prêtes à
 l'usage pour du code "sérieux", et que leur usage résulterais nécessairement en
-un code inutilisable.
-
-#pagebreak()
+un code empiré et impossible à maintenir.
 
 == La réalisation
 
@@ -114,9 +133,9 @@ un code inutilisable.
   inutilisable?
 ]
 
-Dans "Coder proprement" (un livre écrit en 2008), Robert C. Martin décrit dès le
-tout premier chapitre ce que je viens de traverser pendant les deux derniers
-mois:
+Dans "Coder proprement" (un livre écrit en *2008*), Robert C. Martin décrit dès
+le tout premier chapitre ce que je venais de traverser pendant les quelques mois
+de ma mission:
 
 #quote(attribution: [Robert C. Martin])[
   Nous pataugeons dans le mauvais code. Nous avançons laborieusement dans un
@@ -131,7 +150,7 @@ constante, et n'est pas prêt de changer.
 
 En revanche, il est tout aussi vrai que depuis que le mauvais code existe, les
 ingénieur·e·s informatique ont fait de leur mieux pour tenter de produire du
-code _propre_, et d'aider leurs collègues à faire de même.
+code "propre", et d'aider leurs collègues et leurs prochains à faire de même.
 
 L'arrivée massive des IAs génératives dans l'environnement de travail des
 ingénieur·e·s informatique a été une révolution, car maintenant tout le monde a
@@ -152,9 +171,9 @@ d'hier face aux problèmes d'aujourd'hui.
 = Rapport d'étonnement
 
 Le problème de la dette technique liées aux IAs génératives est souvent traité
-comme étant unique et nouveau. La seule différence que je constate est que les
-ingénieur·e·s sont confronté·e·s aux difficultés de la gestion d'équipe et de la
-qualité de code beaucoup plus tôt dans leur carrière.
+comme étant unique et nouveau. Or la seule différence que je constate est que
+les ingénieur·e·s sont confronté·e·s aux difficultés de la gestion d'équipe et
+de la qualité de code beaucoup plus tôt dans leur carrière.
 
 = Le problème de la dette technique
 
@@ -203,25 +222,62 @@ Coder proprement est difficile. C'est un art autant qu'une discipline
 d'ingénierie, et demande de l'investissement et de l'attention.
 
 Coder en équipe est un problème autrement plus difficile! Une équipe peut être
-composée de membres très talentueux et malgré tout générer beaucoup de dette
+composée de membres très talentueux et malgré tout produire beaucoup de dette
 technique.
 
 En effet, au delà de la qualité du code produit par chaque personne,
-l'uniformité du code est une nouvelle contrainte qui, si elle n'est pas prise en
-compte, peut rapidement créer des problèmes.
+_l'uniformité_ du code est une nouvelle contrainte qui, si elle n'est pas prise
+en compte, peut rapidement créer des problèmes.
 
-La gestion de la qualité du code en équipe représente une telle complexité qu'il
-en est devenu une discipline à part entière. Une personne est dédiée à s'assurer
-de la qualité et de l'uniformité du code. Son travail consiste notamment en
-l'accompagnement des autres ingénieur·e·s de l'équipe, le suivi de l'évolution
-du code, et surtout la revue de code (_code review_), c'est-à-dire l'inspection
-méthodique des changements pour les valider ou non.
+La gestion de la qualité du code en équipe représente une telle complexité
+qu'elle en est devenu une discipline à part entière. Une personne est dédiée à
+s'assurer de la qualité et de l'uniformité du code. Son travail consiste
+notamment en l'accompagnement des autres ingénieur·e·s de l'équipe, le suivi de
+l'évolution du code, et surtout la revue de code (_code review_), c'est-à-dire
+l'inspection méthodique des changements pour les valider ou non.
 
 Souvent, ces _code reviews_ s'intéressent plus à la propreté du code qu'à son
 fonctionnement. En effet, dans le cadre du développement logiciel en équipe, la
 propreté du code est *plus critique* que son fonctionnement!
 
 == Lors du développement logiciel assisté par IA générative
+
+De nombreux problèmes majeurs sont posé par l'arrivée des IAs génératives dans
+la boîte à outils des ingénieur·e·s informatique, mais je défends que ces
+problèmes existaient déjà avant leur arrivée, et n'ont été que rendu plus
+visibles et surtout, qu'ils se sont mis à toucher des développeurs moins
+expérimentés, qui n'ont donc pas l'expérience pour se rendre compte du danger.
+
+=== Le danger de l'attaque de la chaîne d'approvisionnement
+
+Comme indiqué plus tôt, les IAs génératives n'ont pas accès aux informations du
+monde réel directement, elles se basent sur les informations obtenues pendant
+leur entraînement, qui a potentiellement été réalisé plusieurs mois, voire
+plusieurs années auparavant.
+
+Cela peut se révéler dangereux, par exemple lorsqu'une dépendance a été
+dépréciée ou remplacée par une autre depuis l'entraînement du modèle.
+
+>> Parler également de l'injection de prompt qui permet de mentir aux modèles en
+leur faisant croire qu'une dépendance est safe alors que c'est un virus
+
+=== Le risque du "vibe coding"
+
+Le grand danger dont tout le monde parle sur internet est l'écriture de code par
+IA sans supervision humaine, appelé "vibe coding", et c'est bien justifié.
+
+Dans ce genre de cas, le code devient vite impossible à maintenir. Des fichiers
+de plusieurs milliers de lignes, des fonctions interminables, du code dupliqué,
+des utilisations de librairies externe inutiles voire dangereuses (voir le
+chapitre ci-dessus), etc.
+
+C'est exactement le genre de situation à laquelle j'ai fait face dans la mission
+décrite en introduction du mémoire.
+
+Les IAs génératives ont tendance à fortement ignorer "l'entretien" du code,
+c'est-à-dire la réduction de la dette technique, et nécessitent donc d'être
+surveillées, et qu'on leur dise explicitement quoi faire pour garder un code
+propre et maintenable.
 
 = De l'importance de la "propreté" du code
 
