@@ -240,6 +240,10 @@ Souvent, ces _code reviews_ s'intéressent plus à la propreté du code qu'à so
 fonctionnement. En effet, dans le cadre du développement logiciel en équipe, la
 propreté du code est *plus critique* que son fonctionnement!
 
+Nous reviendrons en détail sur ce métier de responsable qualité dans un chapitre
+ultérieur afin de détailler comment réduire et repousser au maximum la dette
+technique au sein d'un projet en équipe.
+
 == Lors du développement logiciel assisté par IA générative
 
 De nombreux problèmes majeurs sont posé par l'arrivée des IAs génératives dans
@@ -258,18 +262,17 @@ plusieurs années auparavant.
 Cela peut se révéler dangereux, par exemple lorsqu'une dépendance a été
 dépréciée ou remplacée par une autre depuis l'entraînement du modèle.
 
->> Parler également de l'injection de prompt qui permet de mentir aux modèles en
-leur faisant croire qu'une dépendance est safe alors que c'est un virus
+// TODO: Parler également de l'injection de prompt qui permet de mentir aux
+// modèles en leur faisant croire qu'une dépendance est safe alors que c'est un
+// virus
 
-=== Le risque du "vibe coding"
+=== Le danger de la dette technique
 
-Le grand danger dont tout le monde parle sur internet est l'écriture de code par
-IA sans supervision humaine, appelé "vibe coding", et c'est bien justifié.
-
-Dans ce genre de cas, le code devient vite impossible à maintenir. Des fichiers
-de plusieurs milliers de lignes, des fonctions interminables, du code dupliqué,
-des utilisations de librairies externe inutiles voire dangereuses (voir le
-chapitre ci-dessus), etc.
+Lorsque l'on code longtemps avec une IA sans porter une attention toute
+particulière au sujet de la dette technique, le code devient vite impossible à
+maintenir. Des fichiers de plusieurs milliers de lignes, des fonctions
+interminables, du code dupliqué, des utilisations de librairies externe inutiles
+voire dangereuses (voir le chapitre ci-dessus), etc.
 
 C'est exactement le genre de situation à laquelle j'ai fait face dans la mission
 décrite en introduction du mémoire.
@@ -279,9 +282,87 @@ c'est-à-dire la réduction de la dette technique, et nécessitent donc d'être
 surveillées, et qu'on leur dise explicitement quoi faire pour garder un code
 propre et maintenable.
 
+Sans supervision, ou avec de trop gros changements, le code devient vite
+ingérable et impossible à maintenir. Le développeur prend donc le rôle de
+responsable qualité et doit continuellement s'assurer de maintenir la dette
+technique à un niveau gérable.
+
+=== Le danger du "vibe coding"
+
+Le grand danger dont tout le monde parle sur internet est l'écriture de code par
+IA sans supervision humaine, appelé "vibe coding", et c'est bien justifié.
+
+// TODO: développer
+
 = De l'importance de la "propreté" du code
 
+Bien que ce ne soit pas son seul composant, parler de dette technique sans
+mentionner la propreté du code est inutile.
+
+Ce critère est essentiel pour maintenir la dette technique à un niveau
+acceptable, que ce soit dans un projet en équipe ou dans le cadre d'un
+développement assisté par IA générative.
+
 == Grands principes du code propre
+
+Le code propre est centré autour d'une mentalité: Écrire du code pour les
+humains plutôt que pour les machines. Comme dit dans un chapitre précédent, il
+est plus utile que le code ne fonctionne pas mais soit compréhensible plutôt que
+l'inverse.
+
+Des livres entiers ont été écrit sur le code propre (dont notamment "Coder
+proprement" de Robert C. Martin qui est une référence), je n'énumèrerai donc pas
+tout ce qui rend le code "propre". En revanche, il est utile d'en lister
+quelques principes afin de comprendre ce qui rend du code propre ou non.
+
+=== Le nommage doit être explicite et compréhensible
+
+#quote(attribution: [Robert C. Martin])[
+  Les noms abondent dans les logiciels. Nous nommons les variables, les
+  fonctions, les arguments, les classes et les paquetages. Nous nommons les
+  fichiers sources et les répertoires qui les contiennent. […] Puisque les noms
+  sont omniprésents, il est préférable de bien les choisir.
+]
+
+// TODO: Ça peut paraître anecdotique mais c'est important sa race
+
+=== Éviter la duplication
+
+Le principe du _DRY_ (Don't Repeat Yourself) est central dans l'écriture de code
+propre. Les fonctions ont été inventées pour pouvoir utiliser la même logique
+dans plusieurs endroits du code, il faut donc en faire usage!
+
+La duplication est dangereuse car une logique modifiée à un endroit doit alors
+être _manuellement_ mise à jour dans plusieurs autres endroits du code. Si le
+changement doit être réalisé à plusieurs endroits, il est certain qu'en très peu
+de temps la personne en charge de faire une modification va oublier de modifier
+tous les endroits concernés, et introduire une erreur.
+
+La duplication doit être évitée car se baser sur l'attention humaine invite
+systématiquement à l'erreur.
+
+=== Limiter les responsabilité des fonctions
+
+Le fait de coder avec le principe _DRY_ peut introduire un problème: Faire une
+modification à un endroit introduit également un changement à un autre endroit
+où l'on ne voulait pas voir de changement.
+
+Cela résulte quasiment systématiquement d'avoir écrit des fonctions qui ont une
+responsabilité trop grande, c'est-à-dire des fonctions qui font "trop de
+choses".
+
+Les fonctions devraient être très simple, très courte, et être composées entre
+elles afin d'obtenir un comportement précis, afin de conserver à fois un code
+_DRY_ et composable.
+
+Dans "Clean Code", Robert C. Martin invite à pousser le concept à son extrême:
+Une fonction ne devrait faire qu'une seule chose.
+
+Bien que cette méthode soit aujourd'hui considéré un peu excessive, elle est
+assez indicative de l'objectif qui est visé: Que les fonctions soient simples,
+courtes, et avec des responsabilités (très) limitées, afin qu'elles puissent
+être composées entre elles mais qu'elles soient tout à fait _indépendantes_, on
+parle alors d'un système *fortement composable, mais faiblement couplé*.
 
 == Impacts de l'architecture sur la propreté du code
 
@@ -322,6 +403,10 @@ Bouquin: SCRUM
 = Notes
 
 Parler de _gouvernance_
+
+== Sources
+
+- https://www.ibm.com/fr-fr/think/topics/technical-debt
 
 // = Lectures / interview <early_research>
 //
